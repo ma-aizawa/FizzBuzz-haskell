@@ -1,17 +1,17 @@
 main = fizzbuzz [1..100]
 
-f :: Integer -> String
-f x | mod x 15 == 0 = "FizzBuzz"
-    | mod x  3 == 0 = "Fizz"
-    | mod x  5 == 0 = "Buzz"
-    | otherwise     = show x
+convert :: Integer -> String
+convert x | mod x 15 == 0 = "FizzBuzz"
+          | mod x  3 == 0 = "Fizz"
+          | mod x  5 == 0 = "Buzz"
+          | otherwise     = show x
 
-o :: [String] -> IO ()
-o [] = return ()
-o xs = do
+output :: [String] -> IO ()
+output [] = return ()
+output xs = do
   putStrLn $ head xs
-  o $ tail xs
+  output $ tail xs
 
 fizzbuzz :: [Integer] -> IO()
-fizzbuzz xs = o $ map f xs
+fizzbuzz xs = output $ map convert xs
 
