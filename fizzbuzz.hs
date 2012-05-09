@@ -6,12 +6,6 @@ convert x | mod x 15 == 0 = "FizzBuzz"
           | mod x  5 == 0 = "Buzz"
           | otherwise     = show x
 
-output :: [String] -> IO ()
-output [] = return ()
-output xs = do
-  putStrLn $ head xs
-  output $ tail xs
-
 fizzbuzz :: [Integer] -> IO()
-fizzbuzz xs = output $ map convert xs
+fizzbuzz xs = mapM_ putStrLn $ map convert xs
 
